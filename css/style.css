@@ -56,6 +56,16 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
 
+/* ---------- Interactive constellation background ---------- */
+/* Sits between the body background and the content; decorative only. */
+.bg-canvas {
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+main, .site-footer { position: relative; z-index: 1; }
+
 .skip-link {
   position: absolute; left: -999px; top: auto;
   background: var(--accent); color: #fff; padding: 12px 20px; border-radius: 8px; z-index: 200;
