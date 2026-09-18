@@ -220,6 +220,14 @@ main, .site-footer { position: relative; z-index: 1; }
 .feature-card h3 { font-size: 1.05rem; margin-bottom: 10px; color: var(--text); letter-spacing: -0.01em; }
 .feature-card p { font-size: 0.92rem; color: var(--text-dim); }
 
+/* Let the constellation run through the full-bleed sections. In dark mode the
+   page behind the case-study band is already black, so dropping its fill costs
+   nothing visually; in light mode the band stays solid by design. */
+@media (prefers-color-scheme: dark) {
+  .section-feature { background: transparent; }
+  .section-contact { background: rgba(28, 28, 30, 0.72); }
+}
+
 /* ---------- Skills ---------- */
 .skills-group { margin-bottom: 36px; }
 .skills-group h3 { font-size: 0.8rem; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; font-weight: 600; }
@@ -240,7 +248,7 @@ main, .site-footer { position: relative; z-index: 1; }
 .edu-list span { font-size: 0.85rem; color: var(--text-faint); }
 
 /* ---------- Contact ---------- */
-.section-contact { text-align: center; background: var(--bg-alt); }
+.section-contact { text-align: center; background: rgba(245, 245, 247, 0.72); }
 .section-contact .lede { margin: 0 auto; font-size: 1.15rem; }
 .contact-links { display: flex; justify-content: center; gap: 32px; margin-top: 36px; flex-wrap: wrap; }
 .contact-links a {

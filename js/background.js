@@ -9,6 +9,17 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 if (canvas && canvas.getContext) {
   const ctx = canvas.getContext('2d');
 
+  // Layout is asserted here as well as in the stylesheet. A visitor holding a
+  // cached copy of the old CSS would otherwise get an unstyled canvas sitting
+  // in the page flow, pushing the header down.
+  canvas.style.position = 'fixed';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.style.zIndex = '0';
+  canvas.style.pointerEvents = 'none';
+
   // Tuning
   const DENSITY = 14000; // one particle per this many CSS pixels of viewport
   const MAX_PARTICLES = 90;
@@ -32,8 +43,8 @@ if (canvas && canvas.getContext) {
   }
   let colors = palette();
 
-  // The CSS owns the canvas's layout size (fixed, inset 0); we only match the
-  // backing store to it, so the drawing always covers the whole viewport.
+  // The canvas's layout size comes from its box (100% of the viewport); we only
+  // match the backing store to it, so the drawing always covers the whole screen.
   function resize() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const rect = canvas.getBoundingClientRect();
