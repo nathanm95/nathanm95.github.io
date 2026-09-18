@@ -225,7 +225,6 @@ main, .site-footer { position: relative; z-index: 1; }
    nothing visually; in light mode the band stays solid by design. */
 @media (prefers-color-scheme: dark) {
   .section-feature { background: transparent; }
-  .section-contact { background: rgba(28, 28, 30, 0.72); }
 }
 
 /* ---------- Skills ---------- */
@@ -249,6 +248,10 @@ main, .site-footer { position: relative; z-index: 1; }
 
 /* ---------- Contact ---------- */
 .section-contact { text-align: center; background: rgba(245, 245, 247, 0.72); }
+/* Must follow the rule above: same specificity, so order decides the winner. */
+@media (prefers-color-scheme: dark) {
+  .section-contact { background: rgba(28, 28, 30, 0.72); }
+}
 .section-contact .lede { margin: 0 auto; font-size: 1.15rem; }
 .contact-links { display: flex; justify-content: center; gap: 32px; margin-top: 36px; flex-wrap: wrap; }
 .contact-links a {
